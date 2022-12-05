@@ -14,5 +14,6 @@ session_destroy();
 <body>
     <?php require_once 'elements/header.php'; ?>
     <h1>Livre d'or</h1>
+    <h2>Bonjour <?= isset($_SESSION['logged_user']) ? $_SESSION['logged_user'] : 'invité' ?> !</h2>
 </body>
 </html>
