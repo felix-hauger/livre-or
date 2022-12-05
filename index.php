@@ -1,5 +1,7 @@
 <?php
 session_start();
+var_dump($_SESSION);
+session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,6 +12,7 @@ session_start();
     <title>Accueil | Livre d'Or</title>
 </head>
 <body>
+    <?php require_once 'elements/header.php'; ?>
     <h1>Livre d'or</h1>
 </body>
 </html>

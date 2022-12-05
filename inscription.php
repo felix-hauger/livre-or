@@ -70,10 +70,6 @@ if (isset($_POST['submit'])) {
         <form action="" method="post">
             <h2>Inscription</h2>
 
-            <input type="text" name="firstname" id="firstname" placeholder="Votre Prénom">
-
-            <input type="text" name="lastname" id="lastname" placeholder="Votre Nom">
-
             <input type="text" name="login" id="login" placeholder="Votre Identifiant">
             <?php if (isset($login_error)): ?>
             <p class="error_msg"><?= $login_error ?></p>
