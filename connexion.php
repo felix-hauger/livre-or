@@ -5,7 +5,7 @@ if (isset($_SESSION['is_logged'])) {
     header('Location: index.php');
     die();
 }
-
+var_dump($_SESSION);
 require_once('elements/header.php');
 
 if (isset($_POST['submit'])) {
