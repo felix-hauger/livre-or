@@ -20,18 +20,16 @@ if (isset($_POST['submit'])) {
         $input_password = htmlspecialchars(trim($_POST['password']), ENT_QUOTES, "UTF-8");
         $input_password_confirmation = htmlspecialchars(trim($_POST['password-confirmation']), ENT_QUOTES, "UTF-8");
         
-    
         
-        $login_ok = true;
         // test if user in db, from the required function
-        // $is_user_in_db = is_user_in_db($input_login, $id);
+        $is_user_in_db = is_user_in_db($input_login, $pdo);
 
-        // if (!$is_user_in_db) {
-        //     $login_ok = true;
-        // } else {
-        //     $login_ok = false;
-        //     $login_error = 'L\'utilisateur existe déjà !';
-        // }
+        if (!$is_user_in_db) {
+            $login_ok = true;
+        } else {
+            $login_ok = false;
+            $login_error = 'L\'utilisateur existe déjà !';
+        }
         
         if ($input_password === $input_password_confirmation) {
             $password_ok = true;
@@ -62,7 +60,7 @@ if (isset($_POST['submit'])) {
             'password' => $hashed_password
         ]);
 
-        header('Location: connexion.php');
+        // header('Location: connexion.php');
         
     }
 
