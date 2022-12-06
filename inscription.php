@@ -7,7 +7,6 @@ if (isset($_SESSION['is_logged'])) {
 }
 
 // $_SESSION['user_successfully_created'] = false;
-require_once('elements/header.php');
 
 if (isset($_POST['submit'])) {
     
@@ -22,15 +21,17 @@ if (isset($_POST['submit'])) {
         $input_password_confirmation = htmlspecialchars(trim($_POST['password-confirmation']), ENT_QUOTES, "UTF-8");
         
     
-        // test if user in db, from the required function
-        $is_user_in_db = is_user_in_db($input_login, $id);
         
-        if (!$is_user_in_db) {
-            $login_ok = true;
-        } else {
-            $login_ok = false;
-            $login_error = 'L\'utilisateur existe déjà !';
-        }
+        $login_ok = true;
+        // test if user in db, from the required function
+        // $is_user_in_db = is_user_in_db($input_login, $id);
+
+        // if (!$is_user_in_db) {
+        //     $login_ok = true;
+        // } else {
+        //     $login_ok = false;
+        //     $login_error = 'L\'utilisateur existe déjà !';
+        // }
         
         if ($input_password === $input_password_confirmation) {
             $password_ok = true;
@@ -49,19 +50,25 @@ if (isset($_POST['submit'])) {
         
         $hashed_password = password_hash($input_password, PASSWORD_BCRYPT);
 
-        $sql = "INSERT INTO users (`login`, `password`) VALUES ('$input_login', '$hashed_password')";
+        // Request with named parameters separated from input data, to protect our code from sql injections
+        $sql = "INSERT INTO users (`login`, `password`) VALUES(:login, :password)";
         
+        // save our prepared request in statement
+        $stmt = $pdo->prepare($sql);
         
-        if ($id->query($sql)) {
-            echo 'Insertion complete! ';
-            header('Location: connexion.php');
-        } else {
-            echo 'Error: ' . $id->error;
-        }
+        // Execute with array of parameters
+        $stmt->execute([
+            'login' => $input_login,
+            'password' => $hashed_password
+        ]);
+
+        header('Location: connexion.php');
+        
     }
 
 }
 
+require_once('elements/header.php');
 
 ?>
 
