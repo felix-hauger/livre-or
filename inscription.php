@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
             'password' => $hashed_password
         ]);
 
-        // header('Location: connexion.php');
+        header('Location: connexion.php');
         
     }
 
