@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
                 // to display log out button & give access to profil.php
                 $_SESSION['is_logged'] = true;
                 
-                // to access profil.php & get user infos from db
+                // to get user infos from db
                 $_SESSION['logged_user_id'] = $db_id;
 
                 $logged_user = $_SESSION['logged_user_id'];
