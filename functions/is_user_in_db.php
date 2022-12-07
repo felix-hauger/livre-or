@@ -10,7 +10,8 @@ function is_user_in_db($user, $db):bool {
 
     // return an associative array with one entry: login
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        
+    
+    // user is not in db until proven wrong
     $result = false;
     
     // while the fetched row isn't null
