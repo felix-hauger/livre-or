@@ -18,14 +18,14 @@ if (isset($_POST['submit'])) {
         $input_password = htmlspecialchars(trim($_POST['password']), ENT_QUOTES, "UTF-8");
     
         // test if user in db, from the required function
-        $is_user_in_db = is_user_in_db($input_login, $pdo);
+        $user_in_db = is_user_in_db($input_login, $pdo);
     
-        if ($is_user_in_db) {
+        if ($user_in_db) {
             // echo 'le login ' . $input_login . ' est dans la base de données<br>';
             
             // $sql = "SELECT login, password FROM users WHERE login LIKE '$input_login'";
 
-            $sql = "SELECT login, password FROM users WHERE login LIKE :login";
+            $sql = "SELECT id, login, password FROM users WHERE login LIKE :login";
             
             // $query = $id->query($sql);
 
@@ -37,22 +37,24 @@ if (isset($_POST['submit'])) {
 
             var_dump($stmt);
             // get login & password from db in associative array
-            $row_user_login_password = $stmt->fetch(PDO::FETCH_ASSOC);
-            $db_login = $row_user_login_password['login'];
-            $db_password = $row_user_login_password['password'];
+            $user_infos = $stmt->fetch(PDO::FETCH_ASSOC);
+            $db_login = $user_infos['login'];
+            $db_password = $user_infos['password'];
     
             // log in if matching password
             if ($input_password === $db_password || password_verify($input_password, $db_password)) {
     
+                $db_id = $user_infos['id'];
+                
                 session_start();
                 
-                // to display log out button
+                // to display log out button & give access to profil.php
                 $_SESSION['is_logged'] = true;
                 
-                // to display profil.php infos & admin link / page if logged as admin
-                $_SESSION['logged_user'] = $db_login;
+                // to access profil.php & get user infos from db
+                $_SESSION['logged_user_id'] = $db_id;
 
-                $logged_user = $_SESSION['logged_user'];
+                $logged_user = $_SESSION['logged_user_id'];
                 
                 echo 'utilisateur ' . $_SESSION['logged_user'] . ' connecté !';
                 header('Location: index.php');
