@@ -1,4 +1,16 @@
 <?php
+require_once 'functions/db_connect.php';
+
+$sql = 'SELECT comment, date, users.login FROM comments INNER JOIN users ON comments.user_id = users.id';
+
+// statement
+$stmt = $pdo->prepare($sql);
+
+$stmt->execute();
+
+$comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
 
 ?>
 <!DOCTYPE html>
@@ -11,5 +23,19 @@
 </head>
 <body>
     <?php require_once 'elements/header.php'; ?>
+    <h1>Livre d'Or</h1>
+    <h2>Vos commentaires</h2>
+    <main>
+        <?php 
+        var_dump($comments);
+        // var_dump($comment);
+        foreach ($comments as $comment): ?>
+            <article><!-- Format string to timestamp Unix w/ strtotime, then format it with date function -->
+                <h3>Posté le <?= date('d/m/Y', strtotime($comment['date'])) ?> par <?= $comment['login'] ?></h3>
+                <p><?= $comment['comment'] ?></p>
+            </article>
+        
+        <?php endforeach ?>
+    </main>
 </body>
 </html>
