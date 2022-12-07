@@ -18,17 +18,26 @@ if (isset($_POST['submit'])) {
         $input_password = htmlspecialchars(trim($_POST['password']), ENT_QUOTES, "UTF-8");
     
         // test if user in db, from the required function
-        $is_user_in_db = is_user_in_db($input_login, $id);
+        $is_user_in_db = is_user_in_db($input_login, $pdo);
     
         if ($is_user_in_db) {
             // echo 'le login ' . $input_login . ' est dans la base de données<br>';
             
-            $sql = "SELECT login, password FROM users WHERE login LIKE '$input_login'";
+            // $sql = "SELECT login, password FROM users WHERE login LIKE '$input_login'";
+
+            $sql = "SELECT login, password FROM users WHERE login LIKE :login";
             
-            $query = $id->query($sql);
-    
+            // $query = $id->query($sql);
+
+            $stmt = $pdo->prepare($sql);
+
+            $stmt->execute([
+                'login' => $input_login
+            ]);
+
+            var_dump($stmt);
             // get login & password from db in associative array
-            $row_user_login_password = $query->fetch_assoc();
+            $row_user_login_password = $stmt->fetch(PDO::FETCH_ASSOC);
             $db_login = $row_user_login_password['login'];
             $db_password = $row_user_login_password['password'];
     
