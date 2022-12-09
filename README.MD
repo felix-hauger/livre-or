@@ -1,14 +1,15 @@
-# Objectifs
+# Content
 
-Création d'un livre d'or avec les pages :
+Guestbook built with the pages :
 
--index.php
--incription.php
--connexion.php
--profil.php
--livre-or.php (liste des commentaires)
--commentaire.php (formulaire d'ajout de commentaire)
+-index.php (home page)
+-incription.php (to register user)
+-connexion.php (for a registered user to log in)
+-profil.php (to change registered user infos)
+-livre-or.php (the guestbook page - list users comments)
+-commentaire.php (for registered users to add comments)
+
 
 # TODO
 
-Ajouter des try catch pour les requêtes sql qui modifient la db
+Add some try catch for queries that modifies the database
