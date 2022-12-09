@@ -4,7 +4,7 @@ var_dump($_SESSION);
 
 // If logged, get user login with user id
 if (isset($_SESSION['is_logged'])) {
-    require_once 'functions/db_connect.php';
+    require_once 'db_connect.php';
     
     $sql = "SELECT login FROM users WHERE id LIKE :id";
     

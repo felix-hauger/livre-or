@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'functions/db_connect.php';
+require_once 'db_connect.php';
 
 $sql = 'SELECT comment, date, users.login FROM comments INNER JOIN users ON comments.user_id = users.id ORDER BY date DESC';
 

@@ -2,16 +2,16 @@
 session_start();
 
 
-require_once('functions/db_connect.php');
-require_once('functions/is_user_in_db.php');
-
-
 var_dump($_SESSION);
 
 if (!isset($_SESSION['is_logged'])) {
     header('Location: connexion.php');
     die();
 }
+
+
+require_once('db_connect.php');
+require_once('functions/is_user_in_db.php');
 
 // $logged_user = $_SESSION['logged_user'];
 $logged_user_id = $_SESSION['logged_user_id'];

@@ -11,7 +11,7 @@ require_once('elements/header.php');
 if (isset($_POST['submit'])) {
 
     if (!empty($_POST['login']) && !empty($_POST['password'])) {
-        require_once('functions/db_connect.php');
+        require_once('db_connect.php');
         require_once('functions/is_user_in_db.php');
     
         $input_login = htmlspecialchars(trim($_POST['login']), ENT_QUOTES, "UTF-8");

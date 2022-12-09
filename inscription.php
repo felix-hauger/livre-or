@@ -11,7 +11,7 @@ if (isset($_SESSION['is_logged'])) {
 if (isset($_POST['submit'])) {
     
     if (!empty($_POST['login']) && !empty($_POST['password'])&& !empty($_POST['password-confirmation'])) {
-        require_once('functions/db_connect.php');
+        require_once('db_connect.php');
         require_once('functions/is_user_in_db.php');
         
         $inputs_ok = true;

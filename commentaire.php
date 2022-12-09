@@ -6,7 +6,7 @@ if (isset($_SESSION['is_logged']) && isset($_SESSION['logged_user_id'])) {
 
     
     if (isset($_POST['submit'])) {
-        require_once 'functions/db_connect.php';
+        require_once 'db_connect.php';
         
         if (!empty($_POST['comment'])) {
             $comment = htmlspecialchars(trim($_POST['comment']));
