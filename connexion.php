@@ -6,7 +6,7 @@ if (isset($_SESSION['is_logged'])) {
     die();
 }
 
-var_dump($_SESSION);
+// var_dump($_SESSION);
 
 if (isset($_POST['submit'])) {
 
@@ -21,21 +21,15 @@ if (isset($_POST['submit'])) {
         $user_in_db = is_user_in_db($input_login, $pdo);
     
         if ($user_in_db) {
-            // echo 'le login ' . $input_login . ' est dans la base de données<br>';
-            
-            // $sql = "SELECT login, password FROM users WHERE login LIKE '$input_login'";
 
             $sql = "SELECT id, login, password FROM users WHERE login LIKE :login";
             
-            // $query = $id->query($sql);
-
             $stmt = $pdo->prepare($sql);
 
             $stmt->execute([
                 'login' => $input_login
             ]);
 
-            var_dump($stmt);
             // get login & password from db in associative array
             $user_infos = $stmt->fetch(PDO::FETCH_ASSOC);
             $db_login = $user_infos['login'];
@@ -56,7 +50,9 @@ if (isset($_POST['submit'])) {
 
                 $logged_user = $_SESSION['logged_user_id'];
                 
+                // TODO - display message & redirect after one moment
                 echo 'utilisateur ' . $_SESSION['logged_user'] . ' connecté !';
+
                 header('Location: index.php');
 
                 die();
@@ -71,6 +67,7 @@ if (isset($_POST['submit'])) {
             $login_error = 'Identifiants incorrects.';
         }
     } else {
+        // if one or more input is not filled when submitted
         $inputs_error = 'Remplissez tous les champs !';
     }
 }
