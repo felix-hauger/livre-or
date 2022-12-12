@@ -1,6 +1,6 @@
 <?php
 session_start();
-var_dump($_SESSION);
+// var_dump($_SESSION);
 
 // If logged, get user login with user id
 if (isset($_SESSION['is_logged'])) {
@@ -18,11 +18,11 @@ if (isset($_SESSION['is_logged'])) {
 
     $user_infos = $select->fetch();
 
-    var_dump($user_infos);
+    // var_dump($user_infos);
 
     $logged_user = $user_infos['login'];
 
-    var_dump($logged_user);
+    // var_dump($logged_user);
 }
 ?>
 <!DOCTYPE html>
@@ -33,12 +33,19 @@ if (isset($_SESSION['is_logged'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil | Livre d'Or</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <?php require_once 'elements/header.php'; ?>
-    <h1>Livre d'or</h1>
-    <h2>Bonjour <?= isset($logged_user) ? $logged_user : 'invité' ?> !</h2>
+    <?php require_once 'elements/header.php' ?>
+    
+    <main>
+        <div class="fullwidth-container">
+        <h2 id="index-title">Bonjour <?= isset($logged_user) ? $logged_user : 'invité' ?> !</h2>
+        </div>
+    </main>
+    
+    <?php require_once 'elements/footer.php' ?>
 </body>
 
 </html>

@@ -21,11 +21,12 @@ $comments = $select->fetchAll(PDO::FETCH_ASSOC);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Commentaires | Livre d'Or</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <?php require_once 'elements/header.php'; ?>
-    <h1>Livre d'Or</h1>
+
     <h2>Vos commentaires</h2>
     <main>
         <?php foreach ($comments as $comment) : ?>
@@ -38,6 +39,8 @@ $comments = $select->fetchAll(PDO::FETCH_ASSOC);
 
         <?php endforeach ?>
     </main>
+
+    <?php require_once 'elements/footer.php' ?>
 </body>
 
 </html>

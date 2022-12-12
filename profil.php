@@ -72,7 +72,6 @@ if (isset($_POST['submit'])) {
 
         $hashed_password = password_hash($input_password, PASSWORD_BCRYPT);
 
-
         $sql = "UPDATE users SET login = :login, password = :password WHERE id LIKE :id";
 
         $insert = $pdo->prepare($sql);
@@ -84,10 +83,9 @@ if (isset($_POST['submit'])) {
         ]);
 
         $success_msg = 'Mise à jour des information effectuée !';
-        
+
         // Refresh to get update informations from db
         header('refresh: 3');
-
     }
 }
 ?>
@@ -100,6 +98,7 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier les Informations de Profil | Livre d'Or</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -125,7 +124,7 @@ if (isset($_POST['submit'])) {
                     <input type="submit" value="Mettre à Jour" name="submit">
                     <?php if (isset($inputs_error)) : ?>
                         <p class="error_msg"><?= $inputs_error ?></p>
-                    <?php elseif (isset($success_msg)): ?>
+                    <?php elseif (isset($success_msg)) : ?>
                         <p class="success_msg"><?= $success_msg ?></p>
                     <?php endif; ?>
                 </form>
