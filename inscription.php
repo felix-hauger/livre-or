@@ -51,10 +51,10 @@ if (isset($_POST['submit'])) {
         $sql = "INSERT INTO users (`login`, `password`) VALUES(:login, :password)";
 
         // save our prepared request in statement
-        $stmt = $pdo->prepare($sql);
+        $insert = $pdo->prepare($sql);
 
         // Execute with array of parameters
-        $stmt->execute([
+        $insert->execute([
             'login' => $input_login,
             'password' => $hashed_password
         ]);

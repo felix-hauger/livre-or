@@ -4,12 +4,12 @@ function is_user_in_db($user, $db):bool {
 
     $sql = "SELECT login FROM users";
     
-    $stmt = $db->prepare($sql);
+    $select = $db->prepare($sql);
 
-    $stmt->execute();
+    $select->execute();
 
     // return an associative array with one entry: login
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $row = $select->fetch(PDO::FETCH_ASSOC);
     
     // user is not in db until proven wrong
     $result = false;
@@ -25,7 +25,7 @@ function is_user_in_db($user, $db):bool {
             }
         }
         // then fetch a row
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $select->fetch(PDO::FETCH_ASSOC);
         
     }
 

@@ -24,14 +24,14 @@ if (isset($_POST['submit'])) {
 
             $sql = "SELECT id, login, password FROM users WHERE login LIKE :login";
 
-            $stmt = $pdo->prepare($sql);
+            $select = $pdo->prepare($sql);
 
-            $stmt->execute([
+            $select->execute([
                 'login' => $input_login
             ]);
 
             // get login & password from db in associative array
-            $user_infos = $stmt->fetch(PDO::FETCH_ASSOC);
+            $user_infos = $select->fetch(PDO::FETCH_ASSOC);
             $db_login = $user_infos['login'];
             $db_password = $user_infos['password'];
 

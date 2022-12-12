@@ -5,11 +5,11 @@ require_once 'db_connect.php';
 $sql = 'SELECT comment, date, users.login FROM comments INNER JOIN users ON comments.user_id = users.id ORDER BY date DESC';
 
 // statement
-$stmt = $pdo->prepare($sql);
+$select = $pdo->prepare($sql);
 
-$stmt->execute();
+$select->execute();
 
-$comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$comments = $select->fetchAll(PDO::FETCH_ASSOC);
 
 
 ?>

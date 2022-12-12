@@ -8,15 +8,15 @@ if (isset($_SESSION['is_logged'])) {
 
     $sql = "SELECT login FROM users WHERE id LIKE :id";
 
-    $stmt = $pdo->prepare($sql);
+    $select = $pdo->prepare($sql);
 
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $select->setFetchMode(PDO::FETCH_ASSOC);
 
-    $stmt->execute([
+    $select->execute([
         'id' => $_SESSION['logged_user_id']
     ]);
 
-    $user_infos = $stmt->fetch();
+    $user_infos = $select->fetch();
 
     var_dump($user_infos);
 
