@@ -27,14 +27,14 @@ $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <h1>Livre d'Or</h1>
     <h2>Vos commentaires</h2>
     <main>
-        <?php foreach ($comments as $comment): ?>
+    <?php foreach ($comments as $comment): ?>
 
-            <article><!-- Format string to timestamp Unix w/ strtotime, then format it w/ date function -->
-                <h3>Posté le <?= date('d/m/Y', strtotime($comment['date'])) ?> par <?= $comment['login'] ?></h3>
-                <p><?= $comment['comment'] ?></p>
-            </article>
-        
-        <?php endforeach ?>
+        <article><!-- Format string to timestamp Unix w/ strtotime, then format it w/ date function -->
+            <h3>Posté le <?= date('d/m/Y', strtotime($comment['date'])) ?> par <?= $comment['login'] ?></h3>
+            <p><?= $comment['comment'] ?></p>
+        </article>
+
+    <?php endforeach ?>
     </main>
 </body>
 </html>

@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['is_logged'])) {
+    header('Location: connexion.php');
+}
+
 var_dump($_SESSION);
 if (isset($_SESSION['is_logged']) && isset($_SESSION['logged_user_id'])) {
 
@@ -21,7 +25,9 @@ if (isset($_SESSION['is_logged']) && isset($_SESSION['logged_user_id'])) {
                 'date'    => date('Y-m-d h:m:s')
             ]);
             
-        } 
+        } else {
+            $comment_error = 'Le champ est vide !';
+        }
     }
 
 }
@@ -42,5 +48,8 @@ if (isset($_SESSION['is_logged']) && isset($_SESSION['logged_user_id'])) {
         <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
         <input type="submit" name="submit" value="Envoyer">
     </form>
+    <?php if (isset($comment_error)): ?>
+        <p class="error_msg"><?= $comment_error ?></p>
+    <?php endif ?>
 </body>
 </html>
