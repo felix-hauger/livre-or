@@ -6,7 +6,7 @@ if (!isset($_SESSION['is_logged'])) {
     die();
 }
 
-var_dump($_SESSION);
+// var_dump($_SESSION);
 
 require_once('db_connect.php');
 require_once('functions/is_user_in_db.php');
@@ -28,7 +28,7 @@ $select->execute([
 
 $user_infos = $select->fetch(PDO::FETCH_ASSOC);
 
-var_dump($user_infos);
+// var_dump($user_infos);
 
 
 $db_login = $user_infos['login'];

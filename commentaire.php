@@ -5,7 +5,7 @@ if (!isset($_SESSION['is_logged'])) {
     header('Location: connexion.php');
 }
 
-var_dump($_SESSION);
+// var_dump($_SESSION);
 if (isset($_SESSION['is_logged']) && isset($_SESSION['logged_user_id'])) {
 
     if (isset($_POST['submit'])) {
@@ -47,7 +47,7 @@ if (isset($_SESSION['is_logged']) && isset($_SESSION['logged_user_id'])) {
         <div class="form-container">
             <form action="" method="post">
                 <h2>Ajouter un Commentaire</h2>
-                <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+                <textarea name="comment" id="comment" cols="30" rows="10" autofocus></textarea>
                 <input type="submit" name="submit" value="Envoyer">
             </form>
             <?php if (isset($comment_error)) : ?>
