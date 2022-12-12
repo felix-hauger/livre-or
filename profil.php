@@ -83,6 +83,13 @@ if (isset($_POST['submit'])) {
             'id' => $logged_user_id
         ]);
 
+        $success_msg = 'Mise à jour des information effectuée !';
+        
+        // Refresh to get update informations from db
+        header('refresh: 3');
+
+
+
         var_dump($insert);
         // if ($id->query($sql)) {
         //     echo 'Update complete! ';
@@ -135,6 +142,8 @@ if (isset($_POST['submit'])) {
                     <input type="submit" value="Mettre à Jour" name="submit">
                     <?php if (isset($inputs_error)) : ?>
                         <p class="error_msg"><?= $inputs_error ?></p>
+                    <?php elseif (isset($success_msg)): ?>
+                        <p class="success_msg"><?= $success_msg ?></p>
                     <?php endif; ?>
                 </form>
             </div>
