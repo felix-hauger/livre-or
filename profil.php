@@ -88,25 +88,8 @@ if (isset($_POST['submit'])) {
         // Refresh to get update informations from db
         header('refresh: 3');
 
-
-
-        var_dump($insert);
-        // if ($id->query($sql)) {
-        //     echo 'Update complete! ';
-
-        //     // if the condition is realized the table is updated with the value of $input_login, 
-        //     // therefore it is not needed to fetch a new query to update the session variable
-        //     $_SESSION['logged_user'] = $input_login;
-
-        //     // we need however to redirect to update the inputs informations
-        //     header('Location: profil.php');
-
-        // } else {
-        //     echo 'Error: ' . $id->error;
-        // }
     }
 }
-// session_destroy();
 ?>
 
 <!DOCTYPE html>
