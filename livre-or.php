@@ -40,7 +40,7 @@ $comments = $select->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach ?>
     </main>
 
-    <?php require_once 'elements/footer.php' ?>
+    <?php require_once 'elements/footer-static.php' ?>
 </body>
 
 </html>
