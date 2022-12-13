@@ -33,10 +33,10 @@ $comments = $select->fetchAll(PDO::FETCH_ASSOC);
             <hr>
             <?php foreach ($comments as $comment) : ?>
     
-                <article>
+                <div class="comment">
                     <h3>Posté le <?= date('d/m/Y', strtotime($comment['date'])) ?> par <?= $comment['login'] ?></h3>
                     <p><?= $comment['comment'] ?></p>
-                </article>
+                </div>
     
             <?php endforeach ?>
         </div>
