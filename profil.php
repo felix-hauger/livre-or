@@ -32,13 +32,14 @@ $db_password = $user_infos['password'];
 
 if (isset($_POST['submit'])) {
 
-    if (!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['password-confirmation'])) {
+    if (!empty($_POST['login']) && !empty($_POST['new-password']) && !empty($_POST['new-password-confirmation']) && !empty($_POST['current-password'])) {
 
         $inputs_ok = true;
 
         $input_login = htmlspecialchars(trim($_POST['login']), ENT_QUOTES, "UTF-8");
-        $input_password = htmlspecialchars(trim($_POST['password']), ENT_QUOTES, "UTF-8");
-        $input_password_confirmation = htmlspecialchars(trim($_POST['password-confirmation']), ENT_QUOTES, "UTF-8");
+        $input_new_password = htmlspecialchars(trim($_POST['new-password']), ENT_QUOTES, "UTF-8");
+        $input_new_password_confirmation = htmlspecialchars(trim($_POST['new-password-confirmation']), ENT_QUOTES, "UTF-8");
+        $input_current_password = htmlspecialchars(trim($_POST['current-password']), ENT_QUOTES, "UTF-8");
 
         // test if user in db, from the required function
         $user_in_db = is_user_in_db($input_login, $pdo);
@@ -52,11 +53,18 @@ if (isset($_POST['submit'])) {
             }
         }
 
-        if ($input_password === $input_password_confirmation) {
-            $password_ok = true;
+        if ($input_new_password === $input_new_password_confirmation) {
+            $new_password_ok = true;
         } else {
-            $password_ok = false;
-            $password_error = 'Valeurs non identiques dans les champs de mot de passe';
+            $new_password_ok = false;
+            $new_password_error = 'Valeurs non identiques dans les champs de mot de passe.';
+        }
+
+        if (password_verify($input_current_password, $db_password)) {
+            $current_password_ok = true;
+        } else {
+            $current_password_ok = false;
+            $current_password_error = 'Mot de Passe Actuel erroné.';
         }
     } else {
         $inputs_ok = false;
@@ -64,9 +72,9 @@ if (isset($_POST['submit'])) {
     }
 
 
-    if ($inputs_ok && $login_ok && $password_ok) {
+    if ($inputs_ok && $login_ok && $new_password_ok && $current_password_ok) {
 
-        $hashed_password = password_hash($input_password, PASSWORD_BCRYPT);
+        $hashed_password = password_hash($input_new_password, PASSWORD_BCRYPT);
 
         $sql = "UPDATE users SET login = :login, password = :password WHERE id LIKE :id";
 
@@ -111,12 +119,17 @@ if (isset($_POST['submit'])) {
                         <p class="error_msg"><?= $login_error ?></p>
                     <?php endif; ?>
 
-                    <input type="password" name="password" id="password" placeholder="Votre Mot de Passe">
-                    <input type="password" name="password-confirmation" id="password-confirmation" placeholder="Confirmation Mot de Passe">
-                    <?php if (isset($password_error)) : ?>
-                        <p class="error_msg"><?= $password_error ?></p>
+                    <input type="password" name="new-password" id="new-password" placeholder="Nouveau MDP">
+                    <input type="password" name="new-password-confirmation" id="new-password-confirmation" placeholder="Confirmation Nouveau MDP">
+                    <?php if (isset($new_password_error)) : ?>
+                        <p class="error_msg"><?= $new_password_error ?></p>
                     <?php endif; ?>
-
+                        
+                    <input type="password" name="current-password" id="current-password" placeholder="Tapez votre MDP Actuel">
+                    <?php if (isset($current_password_error)) : ?>
+                        <p class="error_msg"><?= $current_password_error ?></p>
+                    <?php endif; ?>
+                    
                     <input type="submit" value="Mettre à Jour" name="submit">
                     <?php if (isset($inputs_error)) : ?>
                         <p class="error_msg"><?= $inputs_error ?></p>
