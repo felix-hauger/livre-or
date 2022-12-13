@@ -206,6 +206,9 @@ main .comments-container hr {
 main .comments-container .comment {
     width: 600px;
     background-color: var(--glass-color);
+    border: none;
+    border-left: 1px solid var(--glass-color);
+    border-top: 1px solid var(--glass-color);
     padding: 20px 30px;
     margin-bottom: 25px;
     backdrop-filter: blur(10px);
