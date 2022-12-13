@@ -28,15 +28,18 @@ $comments = $select->fetchAll(PDO::FETCH_ASSOC);
     <?php require_once 'elements/header.php'; ?>
 
     <main>
-        <h2>Vos commentaires</h2>
-        <?php foreach ($comments as $comment) : ?>
-
-            <article>
-                <h3>Posté le <?= date('d/m/Y', strtotime($comment['date'])) ?> par <?= $comment['login'] ?></h3>
-                <p><?= $comment['comment'] ?></p>
-            </article>
-
-        <?php endforeach ?>
+        <div class="comments-container">
+            <h2>Vos commentaires</h2>
+            <hr>
+            <?php foreach ($comments as $comment) : ?>
+    
+                <article>
+                    <h3>Posté le <?= date('d/m/Y', strtotime($comment['date'])) ?> par <?= $comment['login'] ?></h3>
+                    <p><?= $comment['comment'] ?></p>
+                </article>
+    
+            <?php endforeach ?>
+        </div>
     </main>
 
     <?php require_once 'elements/footer-static.php' ?>

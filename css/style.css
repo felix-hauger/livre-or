@@ -72,6 +72,7 @@ header nav a:hover {
 main {
     margin-top: 90px;
     padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
 main .fullwidth-container {
@@ -187,6 +188,25 @@ main .form-container form input[type='submit'] {
 
 main .form-container form input ::placeholder {
     color: #fff;
+}
+
+/* ------- COMMENTS -------- */
+
+main .comments-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main .comments-container h2 {
+    font-size: 2.3rem;
+    color: #B1BD4A;
+}
+
+main .comments-container hr {
+    margin: 3rem 0 5rem;
+    border-color: #DAA520;
+    width: 60%;
 }
 
 
