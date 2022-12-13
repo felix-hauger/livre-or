@@ -1,24 +1,22 @@
 <?php
 session_start();
 
+// Set in connexion.php at user log in 
 if (!isset($_SESSION['is_logged'])) {
     header('Location: connexion.php');
     die();
 }
 
-// var_dump($_SESSION);
-
+// PDO connection
 require_once('db_connect.php');
+
 require_once('functions/is_user_in_db.php');
 
-// $logged_user = $_SESSION['logged_user'];
+// Set in connexion.php at user log in 
 $logged_user_id = $_SESSION['logged_user_id'];
 
+// get user infos using id, that will use session variable
 $sql = "SELECT login, password FROM users WHERE id LIKE :id";
-
-// $query = $id->query($sql);
-
-// $user_infos = $query->fetch_assoc();
 
 $select = $pdo->prepare($sql);
 
@@ -27,8 +25,6 @@ $select->execute([
 ]);
 
 $user_infos = $select->fetch(PDO::FETCH_ASSOC);
-
-// var_dump($user_infos);
 
 
 $db_login = $user_infos['login'];
