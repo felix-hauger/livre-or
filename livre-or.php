@@ -11,7 +11,7 @@ $select->execute();
 
 $comments = $select->fetchAll(PDO::FETCH_ASSOC);
 
-
+// At display, format fetched string date to timestamp Unix w/ strtotime, then format it w/ date function
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -27,12 +27,11 @@ $comments = $select->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <?php require_once 'elements/header.php'; ?>
 
-    <h2>Vos commentaires</h2>
     <main>
+        <h2>Vos commentaires</h2>
         <?php foreach ($comments as $comment) : ?>
 
             <article>
-                <!-- Format string to timestamp Unix w/ strtotime, then format it w/ date function -->
                 <h3>Posté le <?= date('d/m/Y', strtotime($comment['date'])) ?> par <?= $comment['login'] ?></h3>
                 <p><?= $comment['comment'] ?></p>
             </article>
