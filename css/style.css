@@ -209,7 +209,19 @@ main .comments-container hr {
     width: 60%;
 }
 
+main .comments-container .comment {
+    width: 600px;
+    background-color: var(--glass-color);
+    padding: 20px 30px;
+    margin-bottom: 25px;
+    backdrop-filter: blur(10px);
+    color: #eee;
+    border-radius: 20px;
+}
 
+main .comments-container .comment p {
+    margin-top: 12px;
+}
 
 /* ----------- FOOTER ---------- */
 
