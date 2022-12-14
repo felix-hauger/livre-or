@@ -34,6 +34,7 @@ if (isset($_SESSION['is_logged'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil | Livre d'Or</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/42d5a324f0.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
