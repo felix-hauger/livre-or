@@ -35,8 +35,13 @@ $comments = $select->fetchAll(PDO::FETCH_ASSOC);
             <?php foreach ($comments as $comment) : ?>
     
                 <div class="comment">
-                    <h3>Posté le <?= date('d/m/Y', strtotime($comment['date'])) ?> par <?= $comment['login'] ?></h3>
-                    <p><?= $comment['comment'] ?></p>
+                    <div class="pfp-container">
+                        <img src="uploads/pfp/default_pfp.png" alt="image profil par défaut" class="pfp">
+                    </div>
+                    <div class="text-container">
+                        <h3>Posté le <?= date('d/m/Y', strtotime($comment['date'])) ?> par <?= $comment['login'] ?></h3>
+                        <p><?= $comment['comment'] ?></p>
+                    </div>
                 </div>
     
             <?php endforeach ?>
