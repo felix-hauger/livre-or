@@ -111,7 +111,7 @@ if (isset($_POST['submit'])) {
 
     <main>
         <div class="hero">
-            <div class="form-container">
+            <div id="profile-forms" class="form-container">
                 <form action="" method="post">
                     <h2>Modifier vos informations de profil</h2>
 
@@ -137,6 +137,24 @@ if (isset($_POST['submit'])) {
                     <?php elseif (isset($success_msg)) : ?>
                         <p class="success_msg"><?= $success_msg ?></p>
                     <?php endif; ?>
+                </form>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <h2>Modifier votre image de profil</h2>
+
+                    <img src="uploads/pfp/default_pfp.png" alt="current profile picture" id="current-pfp">
+
+                    <label for="profile-picture" class="file-upload">
+                        <img src="img/upload-icon-20609.png" alt="upload icon" id="upload-icon">
+                        <span>Télécharger une image</span>
+                        <input type="file" name="profile-picture" id="profile-picture">
+                    </label>
+
+                    <input type="submit" name="submit" value="Modifier">
+                </form>
+                <form action="supprimer-compte.php" method="post">
+                    <h2>Supprimer votre compte</h2>
+
+                    <input type="submit" name="delete" id="delete" value="Supprimer">
                 </form>
             </div>
         </div>

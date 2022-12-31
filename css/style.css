@@ -130,7 +130,8 @@ main .form-container form h2 {
 }
 
 main .form-container form input,
-main .form-container form textarea {
+main .form-container form textarea,
+main .form-container label[for="profile-picture"] {
     display: block;
     background-color: transparent;
     border: none;
@@ -168,7 +169,8 @@ main .form-container form input:hover,
 main .form-container form input[type='text']:focus,
 main .form-container form input[type='password']:focus,
 main .form-container form textarea:focus,
-main .form-container form textarea:hover  {
+main .form-container form textarea:hover,
+main .form-container label[for="profile-picture"]:hover  {
     background-color: rgba(255, 255, 255, .1);
     box-shadow: 4px 4px 60px 8px var(--shadow-color);
 }
@@ -182,6 +184,42 @@ main .form-container form input[type='submit'] {
 
 main .form-container form input ::placeholder {
     color: #fff;
+}
+
+/* PROFIL.PHP */
+
+main #profile-forms form {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+main #profile-forms #profile-picture {
+    display: none;
+}
+
+main #profile-forms label[for="profile-picture"] {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+main #profile-forms #upload-icon {
+    width: 30px;
+    margin-right: 8px;
+}
+
+main #profile-forms #current-pfp {
+    width: 40px;
+}
+
+main #profile-forms input#delete {
+    background-color: rgba(255, 46, 31, .5);
+    border-left: 1px solid rgba(255, 46, 31, .5);
+    border-top: 1px solid rgba(255, 46, 31, .5);
+}
+
+main #profile-forms input#delete:hover {
+    background-color: rgba(255, 46, 31, .8);
 }
 
 /* ------- COMMENTS -------- */
