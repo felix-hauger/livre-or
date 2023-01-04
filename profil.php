@@ -30,7 +30,7 @@ $user_infos = $select->fetch(PDO::FETCH_ASSOC);
 $db_login = $user_infos['login'];
 $db_password = $user_infos['password'];
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['infos-submit'])) {
 
     if (!empty($_POST['login']) && !empty($_POST['new-password']) && !empty($_POST['new-password-confirmation']) && !empty($_POST['current-password'])) {
 
@@ -91,9 +91,30 @@ if (isset($_POST['submit'])) {
         // Refresh to get update informations from db
         header('refresh: 3');
     }
+} elseif (isset($_POST['pfp-submit'])) {
+    // var_dump($_POST);
+    // var_dump($_FILES);
+
+    // echo exec('whoami');
+
+    if (isset($_FILES['profile-picture']) && $_FILES['profile-picture']['error'] == 0) {
+        if ($_FILES['profile-picture']['size'] <= 1000000) {
+            $file_infos = pathinfo($_FILES['profile-picture']['name']);
+            // var_dump($file_infos);
+            $file_extension = $file_infos['extension'];
+            // var_dump($file_extension);
+            $extensions_array = ['png', 'gif', 'jpg', 'jpeg', 'webp'];
+
+            if (in_array($file_extension, $extensions_array)) {
+                if (file_exists(''))
+                // echo 'proute';
+                imagepng(imagecreatefromstring(file_get_contents($_FILES['profile-picture']['tmp_name'])), 'uploads/pfp/' . $logged_user_id . '_pfp' . '.png');
+
+            }
+        }
+    }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -131,13 +152,14 @@ if (isset($_POST['submit'])) {
                         <p class="error_msg"><?= $current_password_error ?></p>
                     <?php endif; ?>
                     
-                    <input type="submit" value="Mettre à Jour" name="submit">
+                    <input type="submit" value="Mettre à Jour" name="infos-submit">
                     <?php if (isset($inputs_error)) : ?>
                         <p class="error_msg"><?= $inputs_error ?></p>
                     <?php elseif (isset($success_msg)) : ?>
                         <p class="success_msg"><?= $success_msg ?></p>
                     <?php endif; ?>
                 </form>
+
                 <form action="" method="post" enctype="multipart/form-data">
                     <h2>Modifier votre image de profil</h2>
 
@@ -145,12 +167,13 @@ if (isset($_POST['submit'])) {
 
                     <label for="profile-picture" class="file-upload">
                         <img src="img/upload-icon-20609.png" alt="upload icon" id="upload-icon">
-                        <span>Télécharger une image</span>
+                        <span>Télécharger une image (max 1mo)</span>
                         <input type="file" name="profile-picture" id="profile-picture">
                     </label>
 
-                    <input type="submit" name="submit" value="Modifier">
+                    <input type="submit" name="pfp-submit" value="Modifier">
                 </form>
+
                 <form action="supprimer-compte.php" method="post">
                     <h2>Supprimer votre compte</h2>
 
