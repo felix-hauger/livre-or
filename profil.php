@@ -92,22 +92,22 @@ if (isset($_POST['infos-submit'])) {
         header('refresh: 3');
     }
 } elseif (isset($_POST['pfp-submit'])) {
-    var_dump($_POST);
-    var_dump($_FILES);
+    // var_dump($_POST);
+    // var_dump($_FILES);
 
-    echo exec('whoami');
+    // echo exec('whoami');
 
     if (isset($_FILES['profile-picture']) && $_FILES['profile-picture']['error'] == 0) {
         if ($_FILES['profile-picture']['size'] <= 1000000) {
             $file_infos = pathinfo($_FILES['profile-picture']['name']);
-            var_dump($file_infos);
+            // var_dump($file_infos);
             $file_extension = $file_infos['extension'];
-            var_dump($file_extension);
+            // var_dump($file_extension);
             $extensions_array = ['png', 'gif', 'jpg', 'jpeg', 'webp'];
 
             if (in_array($file_extension, $extensions_array)) {
                 if (file_exists(''))
-                echo 'proute';
+                // echo 'proute';
                 imagepng(imagecreatefromstring(file_get_contents($_FILES['profile-picture']['tmp_name'])), 'uploads/pfp/' . $logged_user_id . '_pfp' . '.png');
 
             }
