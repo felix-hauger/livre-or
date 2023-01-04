@@ -29,7 +29,7 @@ $comments = $select->fetchAll(PDO::FETCH_ASSOC);
     <?php require_once 'elements/header.php'; ?>
 
     <main>
-        <div class="comments-container">
+        <div class="container comments-container">
             <h2>Vos commentaires</h2>
             <hr>
             <?php foreach ($comments as $comment) : ?>
@@ -48,7 +48,7 @@ $comments = $select->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </main>
 
-    <?php require_once 'elements/footer-static.php' ?>
+    <?php require_once 'elements/footer.php' ?>
 </body>
 
 </html>

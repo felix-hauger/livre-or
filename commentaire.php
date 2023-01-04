@@ -45,7 +45,7 @@ if (isset($_SESSION['is_logged']) && isset($_SESSION['logged_user_id'])) {
 <body>
     <?php require_once 'elements/header.php'; ?>
     <main>
-        <div class="form-container">
+        <div class="container form-container">
             <form action="" method="post">
                 <h2>Ajouter un Commentaire</h2>
                 <textarea name="comment" id="comment" cols="30" rows="10" autofocus></textarea>

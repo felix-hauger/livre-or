@@ -41,8 +41,8 @@ if (isset($_SESSION['is_logged'])) {
     <?php require_once 'elements/header.php' ?>
     
     <main>
-        <div class="fullwidth-container">
-        <h2 id="index-title">Bonjour <?= isset($logged_user) ? $logged_user : 'invité' ?> !</h2>
+        <div class="container">
+            <h2 id="index-title">Bonjour <?= isset($logged_user) ? $logged_user : 'invité' ?> !</h2>
         </div>
     </main>
     

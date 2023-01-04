@@ -87,7 +87,7 @@ if (isset($_POST['submit'])) {
     <?php require_once 'elements/header.php'; ?>
     <main>
         <div class="hero">
-            <div class="form-container">
+            <div class="container form-container">
                 <form action="" method="post">
                     <h2>Connexion</h2>
 

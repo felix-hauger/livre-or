@@ -80,7 +80,7 @@ require_once('elements/header.php');
     
 
     <main>
-        <div class="form-container">
+        <div class="container form-container">
             <form action="" method="post">
                 <h2>Inscription</h2>
 
