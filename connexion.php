@@ -86,24 +86,22 @@ if (isset($_POST['submit'])) {
 <body>
     <?php require_once 'elements/header.php'; ?>
     <main>
-        <div class="hero">
-            <div class="container form-container">
-                <form action="" method="post">
-                    <h2>Connexion</h2>
+        <div class="container form-container">
+            <form action="" method="post">
+                <h2>Connexion</h2>
 
-                    <input type="text" name="login" id="login" placeholder="Votre Identifiant">
+                <input type="text" name="login" id="login" placeholder="Votre Identifiant">
 
-                    <input type="password" name="password" id="password" placeholder="Votre Mot de Passe">
-                    <?php if (isset($login_error)) : ?>
-                        <p class="error_msg"><?= $login_error ?></p>
-                    <?php endif; ?>
+                <input type="password" name="password" id="password" placeholder="Votre Mot de Passe">
+                <?php if (isset($login_error)) : ?>
+                    <p class="error_msg"><?= $login_error ?></p>
+                <?php endif; ?>
 
-                    <input type="submit" value="Connexion" name="submit">
-                    <?php if (isset($inputs_error)) : ?>
-                        <p class="error_msg"><?= $inputs_error ?></p>
-                    <?php endif; ?>
-                </form>
-            </div>
+                <input type="submit" value="Connexion" name="submit">
+                <?php if (isset($inputs_error)) : ?>
+                    <p class="error_msg"><?= $inputs_error ?></p>
+                <?php endif; ?>
+            </form>
         </div>
     </main>
 </body>
