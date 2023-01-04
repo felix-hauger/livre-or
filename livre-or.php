@@ -2,7 +2,7 @@
 session_start();
 require_once 'db_connect.php';
 
-$sql = 'SELECT comment, date, users.login FROM comments INNER JOIN users ON comments.user_id = users.id ORDER BY date DESC';
+$sql = 'SELECT comment, date, users.login, users.id as user_id FROM comments INNER JOIN users ON comments.user_id = users.id ORDER BY date DESC';
 
 // statement
 $select = $pdo->prepare($sql);
@@ -36,7 +36,7 @@ $comments = $select->fetchAll(PDO::FETCH_ASSOC);
     
                 <div class="comment">
                     <div class="pfp-container">
-                        <img src="uploads/pfp/default_pfp.png" alt="image profil par défaut" class="pfp">
+                        <div class="pfp" style="background-image: url('uploads/pfp/<?= file_exists('uploads/pfp/' . $comment['user_id'] . '_pfp.png') ? $comment['user_id'] . '_pfp.png' : 'default_pfp.png' ?>');"></div>
                     </div>
                     <div class="text-container">
                         <h3>Posté le <?= date('d/m/Y', strtotime($comment['date'])) ?> par <?= $comment['login'] ?></h3>
