@@ -269,6 +269,7 @@ main #profile-forms input#delete {
     background-color: rgba(255, 46, 31, .5);
     border-left: 1px solid rgba(255, 46, 31, .5);
     border-top: 1px solid rgba(255, 46, 31, .5);
+    transition: all .5s ease;
 }
 
 main #profile-forms input#delete:hover {
