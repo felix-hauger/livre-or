@@ -30,16 +30,13 @@ $user_infos = $select->fetch(PDO::FETCH_ASSOC);
 $db_login = $user_infos['login'];
 $db_password = $user_infos['password'];
 
-if (isset($_POST['infos-submit'])) {
+if (isset($_POST['login-submit'])) {
 
-    if (!empty($_POST['login']) && !empty($_POST['new-password']) && !empty($_POST['new-password-confirmation']) && !empty($_POST['current-password'])) {
+    if (!empty($_POST['login'])) {
 
-        $inputs_ok = true;
+        $login_filled = true;
 
         $input_login = htmlspecialchars(trim($_POST['login']), ENT_QUOTES, "UTF-8");
-        $input_new_password = htmlspecialchars(trim($_POST['new-password']), ENT_QUOTES, "UTF-8");
-        $input_new_password_confirmation = htmlspecialchars(trim($_POST['new-password-confirmation']), ENT_QUOTES, "UTF-8");
-        $input_current_password = htmlspecialchars(trim($_POST['current-password']), ENT_QUOTES, "UTF-8");
 
         // test if user in db, from the required function
         $user_in_db = is_user_in_db($input_login, $pdo);
@@ -52,6 +49,36 @@ if (isset($_POST['infos-submit'])) {
                 $login_error = 'L\'utilisateur existe déjà !';
             }
         }
+    } else {
+        $login_filled = false;
+        $login_unfilled_error = 'Remplissez le champ !';
+    }
+
+    if ($login_filled && $login_ok) {
+
+        $sql = "UPDATE users SET login = :login WHERE id LIKE :id";
+
+        $insert = $pdo->prepare($sql);
+
+        $insert->execute([
+            'login' => $input_login,
+            'id' => $logged_user_id
+        ]);
+
+        $login_success = 'Mise à jour du login effectuée !';
+
+        // Refresh to get update informations from db
+        header('refresh: 3');
+    }
+} elseif (isset($_POST['pw-submit'])) {
+
+    if (!empty($_POST['new-password']) && !empty($_POST['new-password-confirmation']) && !empty($_POST['current-password'])) {
+
+        $pw_filled = true;
+
+        $input_new_password = htmlspecialchars(trim($_POST['new-password']), ENT_QUOTES, "UTF-8");
+        $input_new_password_confirmation = htmlspecialchars(trim($_POST['new-password-confirmation']), ENT_QUOTES, "UTF-8");
+        $input_current_password = htmlspecialchars(trim($_POST['current-password']), ENT_QUOTES, "UTF-8");
 
         if ($input_new_password === $input_new_password_confirmation) {
             $new_password_ok = true;
@@ -67,26 +94,24 @@ if (isset($_POST['infos-submit'])) {
             $current_password_error = 'Mot de Passe Actuel erroné.';
         }
     } else {
-        $inputs_ok = false;
-        $inputs_error = 'Remplissez tous les champs !';
+        $pw_filled = false;
+        $pw_unfilled_error = 'Remplissez tous les champs !';
     }
 
-
-    if ($inputs_ok && $login_ok && $new_password_ok && $current_password_ok) {
+    if ($pw_filled && $new_password_ok && $current_password_ok) {
 
         $hashed_password = password_hash($input_new_password, PASSWORD_BCRYPT);
 
-        $sql = "UPDATE users SET login = :login, password = :password WHERE id LIKE :id";
+        $sql = "UPDATE users SET password = :password WHERE id LIKE :id";
 
         $insert = $pdo->prepare($sql);
 
         $insert->execute([
-            'login' => $input_login,
             'password' => $hashed_password,
             'id' => $logged_user_id
         ]);
 
-        $success_msg = 'Mise à jour des information effectuée !';
+        $pw_success = 'Mise à jour du mot de passe effectuée !';
 
         // Refresh to get update informations from db
         header('refresh: 3');
@@ -106,10 +131,8 @@ if (isset($_POST['infos-submit'])) {
             $extensions_array = ['png', 'gif', 'jpg', 'jpeg', 'webp'];
 
             if (in_array($file_extension, $extensions_array)) {
-                if (file_exists(''))
-                // echo 'proute';
-                imagepng(imagecreatefromstring(file_get_contents($_FILES['profile-picture']['tmp_name'])), 'uploads/pfp/' . $logged_user_id . '_pfp' . '.png');
-
+                    // echo 'proute';
+                    imagepng(imagecreatefromstring(file_get_contents($_FILES['profile-picture']['tmp_name'])), 'uploads/pfp/' . $logged_user_id . '_pfp' . '.png');
             }
         }
     }
@@ -133,29 +156,41 @@ if (isset($_POST['infos-submit'])) {
     <main>
         <div id="profile-forms" class="container form-container">
             <form action="" method="post">
-                <h2>Modifier vos informations de profil</h2>
+                <h2>Modifier votre login</h2>
 
                 <input type="text" name="login" id="login" placeholder="Votre Identifiant" value="<?= $db_login ?>">
                 <?php if (isset($login_error)) : ?>
                     <p class="error_msg"><?= $login_error ?></p>
                 <?php endif; ?>
 
+                <input type="submit" value="Mettre à Jour" name="login-submit">
+
+                <?php if (isset($login_unfilled_error)) : ?>
+                    <p class="error_msg"><?= $login_unfilled_error ?></p>
+                <?php elseif (isset($login_success)) : ?>
+                    <p class="success_msg"><?= $login_success ?></p>
+                <?php endif; ?>
+            </form>
+
+            <form action="" method="post">
+                <h2>Modifier votre mot de passe</h2>
                 <input type="password" name="new-password" id="new-password" placeholder="Nouveau MDP">
                 <input type="password" name="new-password-confirmation" id="new-password-confirmation" placeholder="Confirmation Nouveau MDP">
                 <?php if (isset($new_password_error)) : ?>
                     <p class="error_msg"><?= $new_password_error ?></p>
                 <?php endif; ?>
-                    
+
                 <input type="password" name="current-password" id="current-password" placeholder="Tapez votre MDP Actuel">
                 <?php if (isset($current_password_error)) : ?>
                     <p class="error_msg"><?= $current_password_error ?></p>
                 <?php endif; ?>
-                
-                <input type="submit" value="Mettre à Jour" name="infos-submit">
-                <?php if (isset($inputs_error)) : ?>
-                    <p class="error_msg"><?= $inputs_error ?></p>
-                <?php elseif (isset($success_msg)) : ?>
-                    <p class="success_msg"><?= $success_msg ?></p>
+
+                <input type="submit" value="Mettre à Jour" name="pw-submit">
+
+                <?php if (isset($pw_unfilled_error)) : ?>
+                    <p class="error_msg"><?= $pw_unfilled_error ?></p>
+                <?php elseif (isset($pw_success)) : ?>
+                    <p class="success_msg"><?= $pw_success ?></p>
                 <?php endif; ?>
             </form>
 
