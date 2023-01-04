@@ -3,7 +3,7 @@
     <nav>
         <ul>
             <li><a href="index.php">Accueil</a></li>
-            <li><a href="livre-or.php">Livre d'Or</a></li>
+            <li><a href="livre-or.php">Le Livre d'Or</a></li>
 
             <?php if (isset($_SESSION['is_logged'])): ?>
                 <li><a href="commentaire.php">Ajouter un Commentaire</a></li>
