@@ -41,7 +41,7 @@ if (isset($_POST['delete-confirm'])) {
         <div class="container form-container">
             <form action="" method="post" id="delete-confirm">
                 <h2>Voulez-vous vraiment supprimer votre compte ?</h2>
-                <p>Tous vos commentaires seront supprimés.<br />
+                <p class="form-paragraph">Tous vos commentaires seront supprimés.<br />
                 Cette action n'est pas réversible.</p>
                 <input type="submit" id="delete" name="delete-confirm" value="Supprimer">
             </form>

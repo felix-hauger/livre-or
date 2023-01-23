@@ -24,7 +24,13 @@ h1, h2, h3, p {
 .error_msg {
     color: #FF3C00;
     font-weight: 600;
-    margin-top: 4px;
+    margin-top: 5px;
+}
+
+.success_msg {
+    color:#37a969;
+    font-weight: 600;
+    margin-top: 10px;
 }
 
 header {
@@ -186,17 +192,17 @@ main .form-container form {
 
 main .form-container form h2,
 main .form-container form p {
-    color: #fff;
     opacity: .9;
     text-shadow: 2px 2px 4px var(--shadow-color);
-
 }
 
 main .form-container form h2 {
+    color: #fff;
     margin-bottom: 2em;
 }
 
-main .form-container form p {
+main .form-container form .form-paragraph {
+    color: #fff;
     font-weight: 600;
     font-size: 1.2rem;
     margin-bottom: 1em;
