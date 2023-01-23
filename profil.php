@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Set in connexion.php at user log in 
+// Set in connexion.php at user log in
 if (!isset($_SESSION['is_logged'])) {
     header('Location: connexion.php');
     die();
@@ -148,6 +148,7 @@ if (isset($_POST['login-submit'])) {
     <title>Modifier les Informations de Profil | Livre d'Or</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/42d5a324f0.js" crossorigin="anonymous"></script>
+    <script defer src="js/script.js"></script>
 </head>
 
 <body>
@@ -185,6 +186,8 @@ if (isset($_POST['login-submit'])) {
                         <span>Télécharger une image (max 1mo)</span>
                         <input type="file" name="profile-picture" id="profile-picture">
                     </label>
+
+                    <p id="pfp-name"></p>
     
                     <input type="submit" name="pfp-submit" value="Modifier">
                 </form>

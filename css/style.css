@@ -333,7 +333,11 @@ main #profile-forms .pfp-container .pfp {
     height: 100%;
     /* width: 100%; */
     /* min-width: 100%; */
-    
+}
+
+main #profile-forms #pfp-name {
+    margin-top: 5px;
+    color: #43f591;
 }
 
 /* main #profile-forms .pfp-container .pfp img {
