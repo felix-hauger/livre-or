@@ -267,10 +267,10 @@ main .form-container form input ::placeholder {
 
 /* PROFIL */
 
-main #profile-forms {
-    /* margin-top: -3rem;
-    margin-bottom: -3rem; */
-}
+/* main #profile-forms {
+    margin-top: -3rem;
+    margin-bottom: -3rem;
+} */
 
 main #profile-forms form {
     margin-left: 20px;
@@ -281,9 +281,9 @@ main #profile-forms form:first-child {
     margin-bottom: 30px;
 }
 
-main #profile-forms form h2 {
-    /* margin: 0; */
-}
+/* main #profile-forms form h2 {
+    margin: 0;
+} */
 
 main #profile-forms form #profile-picture {
     display: none;
@@ -299,10 +299,6 @@ main #profile-forms #upload-icon {
     width: 30px;
     margin-right: 8px;
 }
-
-/* main #profile-forms #current-pfp {
-    width: 40px;
-} */
 
 main input#delete {
     background-color: rgba(255, 46, 31, .5);
@@ -320,19 +316,14 @@ main #profile-forms .pfp-container {
     width: 120px;
     height: 120px;
     padding: 8px;
-    /* border-radius: 12px; */
-
 }
 
 main #profile-forms .pfp-container .pfp {
-    /* border-radius: 12px; */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     height: 100%;
-    /* width: 100%; */
-    /* min-width: 100%; */
 }
 
 main #profile-forms #pfp-name {
@@ -340,15 +331,11 @@ main #profile-forms #pfp-name {
     color: #43f591;
 }
 
-/* main #profile-forms .pfp-container .pfp img {
-    height: 100%;
-    min-width: 100%;
-    
-} */
 main form#delete-confirm {
     height: fit-content;
     align-self: center;
 }
+
 /* ------- COMMENTS -------- */
 
 main .comments-container {
@@ -399,12 +386,10 @@ main .comments-container .comment .pfp-container {
     height: 80px;
     width: 80px;
     padding: 5px;
-    /* border-radius: 8px; */
 }
 
 main .comments-container .comment .pfp-container .pfp {
     height: 100%;
-    /* border-radius: 8px; */
 }
 
 main .comments-container .comment .text-container {
@@ -449,8 +434,6 @@ main .comments-container .comment .delete-comment:hover {
 
 footer {
     background-color: rgba(0, 0, 0, .5);
-    /* position: absolute;
-    bottom: 0; */
     width: 100%;
     height: 70px;
     display: flex;
