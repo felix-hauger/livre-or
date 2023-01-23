@@ -241,12 +241,25 @@ main .form-container form input ::placeholder {
 
 /* PROFIL */
 
+main #profile-forms {
+    /* margin-top: -3rem;
+    margin-bottom: -3rem; */
+}
+
 main #profile-forms form {
     margin-left: 20px;
     margin-right: 20px;
 }
 
-main #profile-forms #profile-picture {
+main #profile-forms form:first-child {
+    margin-bottom: 30px;
+}
+
+main #profile-forms form h2 {
+    /* margin: 0; */
+}
+
+main #profile-forms form #profile-picture {
     display: none;
 }
 
@@ -269,6 +282,7 @@ main #profile-forms input#delete {
     background-color: rgba(255, 46, 31, .5);
     border-left: 1px solid rgba(255, 46, 31, .5);
     border-top: 1px solid rgba(255, 46, 31, .5);
+    margin: 0;
     transition: all .5s ease;
 }
 

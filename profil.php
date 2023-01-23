@@ -155,67 +155,73 @@ if (isset($_POST['login-submit'])) {
 
     <main>
         <div id="profile-forms" class="container form-container">
+            <div class="flex-col">
+                <form action="" method="post">
+                    <h2>Modifier votre login</h2>
+    
+                    <input type="text" name="login" id="login" placeholder="Votre Identifiant" value="<?= $db_login ?>">
+                    <?php if (isset($login_error)) : ?>
+                        <p class="error_msg"><?= $login_error ?></p>
+                    <?php endif; ?>
+    
+                    <input type="submit" value="Mettre à Jour" name="login-submit">
+    
+                    <?php if (isset($login_unfilled_error)) : ?>
+                        <p class="error_msg"><?= $login_unfilled_error ?></p>
+                    <?php elseif (isset($login_success)) : ?>
+                        <p class="success_msg"><?= $login_success ?></p>
+                    <?php endif; ?>
+                </form>
+    
+                <form action="" method="post" enctype="multipart/form-data">
+                    <h2>Modifier votre image de profil</h2>
+    
+                    <div class="pfp-container">
+                        <div class="pfp" style="background-image: url('uploads/pfp/<?= file_exists('uploads/pfp/' . $logged_user_id . '_pfp.png') ? $logged_user_id . '_pfp.png' : 'default_pfp.png' ?>');"></div>
+                    </div>
+    
+                    <label for="profile-picture" class="file-upload">
+                        <img src="img/upload-icon-20609.png" alt="upload icon" id="upload-icon">
+                        <span>Télécharger une image (max 1mo)</span>
+                        <input type="file" name="profile-picture" id="profile-picture">
+                    </label>
+    
+                    <input type="submit" name="pfp-submit" value="Modifier">
+                </form>
+                
+            </div>
+
+            <div class="flex-col">
             <form action="" method="post">
-                <h2>Modifier votre login</h2>
+                    <h2>Modifier votre mot de passe</h2>
+                    <input type="password" name="new-password" id="new-password" placeholder="Nouveau MDP">
+                    <input type="password" name="new-password-confirmation" id="new-password-confirmation" placeholder="Confirmation Nouveau MDP">
+                    <?php if (isset($new_password_error)) : ?>
+                        <p class="error_msg"><?= $new_password_error ?></p>
+                    <?php endif; ?>
+    
+                    <input type="password" name="current-password" id="current-password" placeholder="Tapez votre MDP Actuel">
+                    <?php if (isset($current_password_error)) : ?>
+                        <p class="error_msg"><?= $current_password_error ?></p>
+                    <?php endif; ?>
+    
+                    <input type="submit" value="Mettre à Jour" name="pw-submit">
+    
+                    <?php if (isset($pw_unfilled_error)) : ?>
+                        <p class="error_msg"><?= $pw_unfilled_error ?></p>
+                    <?php elseif (isset($pw_success)) : ?>
+                        <p class="success_msg"><?= $pw_success ?></p>
+                    <?php endif; ?>
+                </form>
 
-                <input type="text" name="login" id="login" placeholder="Votre Identifiant" value="<?= $db_login ?>">
-                <?php if (isset($login_error)) : ?>
-                    <p class="error_msg"><?= $login_error ?></p>
-                <?php endif; ?>
-
-                <input type="submit" value="Mettre à Jour" name="login-submit">
-
-                <?php if (isset($login_unfilled_error)) : ?>
-                    <p class="error_msg"><?= $login_unfilled_error ?></p>
-                <?php elseif (isset($login_success)) : ?>
-                    <p class="success_msg"><?= $login_success ?></p>
-                <?php endif; ?>
-            </form>
-
-            <form action="" method="post">
-                <h2>Modifier votre mot de passe</h2>
-                <input type="password" name="new-password" id="new-password" placeholder="Nouveau MDP">
-                <input type="password" name="new-password-confirmation" id="new-password-confirmation" placeholder="Confirmation Nouveau MDP">
-                <?php if (isset($new_password_error)) : ?>
-                    <p class="error_msg"><?= $new_password_error ?></p>
-                <?php endif; ?>
-
-                <input type="password" name="current-password" id="current-password" placeholder="Tapez votre MDP Actuel">
-                <?php if (isset($current_password_error)) : ?>
-                    <p class="error_msg"><?= $current_password_error ?></p>
-                <?php endif; ?>
-
-                <input type="submit" value="Mettre à Jour" name="pw-submit">
-
-                <?php if (isset($pw_unfilled_error)) : ?>
-                    <p class="error_msg"><?= $pw_unfilled_error ?></p>
-                <?php elseif (isset($pw_success)) : ?>
-                    <p class="success_msg"><?= $pw_success ?></p>
-                <?php endif; ?>
-            </form>
-
-            <form action="" method="post" enctype="multipart/form-data">
-                <h2>Modifier votre image de profil</h2>
-
-                <div class="pfp-container">
-                    <div class="pfp" style="background-image: url('uploads/pfp/<?= file_exists('uploads/pfp/' . $logged_user_id . '_pfp.png') ? $logged_user_id . '_pfp.png' : 'default_pfp.png' ?>');"></div>
+    
+                <form action="supprimer-compte.php" method="post">
+                    <!-- <h2>Supprimer votre compte</h2> -->
+    
+                    <input type="submit" name="delete" id="delete" value="Supprimer votre compte">
+                </form>
                 </div>
-
-                <label for="profile-picture" class="file-upload">
-                    <img src="img/upload-icon-20609.png" alt="upload icon" id="upload-icon">
-                    <span>Télécharger une image (max 1mo)</span>
-                    <input type="file" name="profile-picture" id="profile-picture">
-                </label>
-
-                <input type="submit" name="pfp-submit" value="Modifier">
-            </form>
-
-            <form action="supprimer-compte.php" method="post">
-                <h2>Supprimer votre compte</h2>
-
-                <input type="submit" name="delete" id="delete" value="Supprimer">
-            </form>
-        </div>
+            </div>
     </main>
 
     <?php require_once('elements/footer.php'); ?>
