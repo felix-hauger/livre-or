@@ -38,20 +38,14 @@ if (isset($_POST['submit'])) {
             // log in if matching password
             if ($input_password === $db_password || password_verify($input_password, $db_password)) {
 
-                $db_id = $user_infos['id'];
-
-                session_start();
-
                 // to display log out button & give access to profil.php
                 $_SESSION['is_logged'] = true;
 
                 // to get user infos from db
-                $_SESSION['logged_user_id'] = $db_id;
-
-                $logged_user = $_SESSION['logged_user_id'];
+                $_SESSION['logged_user_id'] = $user_infos['id'];
 
                 // TODO - display message & redirect after one moment
-                echo 'utilisateur ' . $_SESSION['logged_user'] . ' connecté !';
+                // echo 'utilisateur ' . $_SESSION['logged_user_login'] . ' connecté !';
 
                 header('Location: index.php');
 

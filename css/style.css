@@ -434,7 +434,6 @@ main .comments-container .comment .delete-comment {
 main .comments-container .comment .delete-comment:hover {
     background-color: rgba(255, 46, 31, .8);
     box-shadow: 4px 4px 60px 8px var(--shadow-color);
-
 }
 
 /* ----------- FOOTER ---------- */
