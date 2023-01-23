@@ -278,7 +278,7 @@ main #profile-forms #upload-icon {
     width: 40px;
 } */
 
-main #profile-forms input#delete {
+main input#delete {
     background-color: rgba(255, 46, 31, .5);
     border-left: 1px solid rgba(255, 46, 31, .5);
     border-top: 1px solid rgba(255, 46, 31, .5);
@@ -286,7 +286,7 @@ main #profile-forms input#delete {
     transition: all .5s ease;
 }
 
-main #profile-forms input#delete:hover {
+main input#delete:hover {
     background-color: rgba(255, 46, 31, .8);
 }
 
@@ -315,7 +315,10 @@ main #profile-forms .pfp-container .pfp {
     min-width: 100%;
     
 } */
-
+main form#delete-confirm {
+    height: fit-content;
+    align-self: center;
+}
 /* ------- COMMENTS -------- */
 
 main .comments-container {
