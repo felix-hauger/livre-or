@@ -406,6 +406,36 @@ main .comments-container .comment .text-container h3 {
     margin-bottom: 12px;
 }
 
+main .comments-container .comment .delete-comment {
+    display: block;
+    background-color: rgba(255, 46, 31, .5);
+    border: none;
+    border-left: rgba(255, 46, 31, .5);
+    border-top: rgba(255, 46, 31, .5);
+    padding: .4rem;
+    border-radius: 50px;
+
+    /* blur behind the element */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    -moz-backdrop-filter: blur(5px);
+
+    /* box-shadow: x y blur spread */
+    box-shadow: 4px 4px 60px var(--shadow-color);
+    color: #fff;
+    text-shadow: 2px 2px 4px var(--shadow-color);
+    transition: all .3s;
+    font-weight: 600;
+    outline-color: rgba(50, 50, 50, .3);
+
+    cursor: pointer;
+}
+
+main .comments-container .comment .delete-comment:hover {
+    background-color: rgba(255, 46, 31, .8);
+    box-shadow: 4px 4px 60px 8px var(--shadow-color);
+
+}
 
 /* ----------- FOOTER ---------- */
 

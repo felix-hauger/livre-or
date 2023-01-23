@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
         $hashed_password = password_hash($input_password, PASSWORD_BCRYPT);
 
         // Request with named parameters separated from input data, to protect our code from sql injections
-        $sql = "INSERT INTO users (`login`, `password`) VALUES(:login, :password)";
+        $sql = "INSERT INTO users (`login`, `password`) VALUES (:login, :password)";
 
         // save our prepared request in statement
         $insert = $pdo->prepare($sql);
@@ -77,7 +77,6 @@ require_once('elements/header.php');
     <script src="https://kit.fontawesome.com/42d5a324f0.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    
 
     <main>
         <div class="container form-container">

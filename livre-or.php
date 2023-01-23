@@ -2,7 +2,7 @@
 session_start();
 require_once 'db_connect.php';
 
-$sql = 'SELECT comment, date, users.login, users.id as user_id FROM comments INNER JOIN users ON comments.user_id = users.id ORDER BY date DESC';
+$sql = 'SELECT comments.id as id, comment, date, users.login, users.id as user_id FROM comments INNER JOIN users ON comments.user_id = users.id ORDER BY date DESC';
 
 // statement
 $select = $pdo->prepare($sql);
@@ -10,6 +10,16 @@ $select = $pdo->prepare($sql);
 $select->execute();
 
 $comments = $select->fetchAll(PDO::FETCH_ASSOC);
+
+if (isset($_POST['delete-comment'])) {
+    var_dump($_POST);
+    $sql = 'DELETE FROM comments WHERE id = :id';
+    $delete = $pdo->prepare($sql);
+    $delete->execute([
+        ':id' => $_POST['delete-comment']
+    ]);
+    header('Location: livre-or.php');
+}
 
 // At display, format fetched string date to timestamp Unix w/ strtotime, then format it w/ date function
 ?>
@@ -42,6 +52,13 @@ $comments = $select->fetchAll(PDO::FETCH_ASSOC);
                         <h3>Posté le <?= date('d/m/Y', strtotime($comment['date'])) ?> par <?= $comment['login'] ?></h3>
                         <p><?= $comment['comment'] ?></p>
                     </div>
+                    <?php if (isset($_SESSION['is_logged'])): ?>
+                        <?php if ($_SESSION['logged_user_id'] === $comment['user_id']): ?>
+                            <form method="post">
+                                <button type="submit" name="delete-comment" class="delete-comment" value="<?= $comment['id'] ?>">Supprimer</button>
+                            </form>
+                        <?php endif ?>
+                    <?php endif ?>
                 </div>
     
             <?php endforeach ?>
