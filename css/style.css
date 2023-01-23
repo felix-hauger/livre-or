@@ -186,7 +186,6 @@ main .form-container form {
     /* box-shadow: x y blur spread color */
     box-shadow: 20px 20px 40px -6px var(--shadow-color);
     text-align: center;
-    
 }
 
 

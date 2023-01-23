@@ -16,12 +16,13 @@ if (isset($_POST['delete-confirm'])) {
         'id' => $_SESSION['logged_user_id']
     ]);
 
-    header('Location: deconnexion.php');
-
+    if ($delete) {
+        unlink('uploads/pfp/' . $_SESSION['logged_user_id'] . '_pfp.png');
+        header('Location: deconnexion.php');
+    }
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
