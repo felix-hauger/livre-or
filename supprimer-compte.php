@@ -1,12 +1,24 @@
 <?php
 session_start();
 
-// var_dump($_SESSION);
 if (!isset($_SESSION['is_logged'])) {
     header('Location: index.php');
     die();
 }
 
+if (isset($_POST['delete-confirm'])) {
+    require_once('db_connect.php');
+
+    $sql = 'DELETE FROM users WHERE id = :id';
+    $delete = $pdo->prepare($sql);
+
+    $delete->execute([
+        'id' => $_SESSION['logged_user_id']
+    ]);
+
+    header('Location: deconnexion.php');
+
+}
 
 ?>
 
