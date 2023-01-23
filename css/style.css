@@ -144,6 +144,15 @@ main > .container {
     font-weight: 600;
 }
 
+.index-container p a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.index-container p a:hover {
+    text-decoration: underline;
+}
+
 /* ------ FORM ------ */
 
 main .form-container {
@@ -168,7 +177,7 @@ main .form-container form {
     -webkit-backdrop-filter: blur(10px);
     -moz-backdrop-filter: blur(10px);
 
-    /* box-shadow: x y blur spread */
+    /* box-shadow: x y blur spread color */
     box-shadow: 20px 20px 40px -6px var(--shadow-color);
     text-align: center;
     
@@ -184,14 +193,13 @@ main .form-container form p {
 }
 
 main .form-container form h2 {
-    /* font-weight: 500; */
     margin-bottom: 2em;
 }
 
 main .form-container form p {
     font-weight: 600;
     font-size: 1.2rem;
-    margin-bottom: 30px;
+    margin-bottom: 1em;
     line-height: 1.5em;
 }
 
