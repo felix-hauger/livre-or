@@ -54,7 +54,7 @@ if (isset($_POST['delete-comment'])) {
                         <p><?= $comment['comment'] ?></p>
                     </div>
                     <?php if (isset($_SESSION['is_logged'])): ?>
-                        <?php if ($_SESSION['logged_user_id'] === $comment['user_id']): ?>
+                        <?php if ($_SESSION['logged_user_id'] === $comment['user_id'] || $_SESSION['logged_user_id'] == 1): ?>
                             <form method="post">
                                 <button type="submit" name="delete-comment" class="delete-comment" value="<?= $comment['id'] ?>">Supprimer</button>
                             </form>

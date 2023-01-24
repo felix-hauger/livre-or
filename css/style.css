@@ -367,7 +367,7 @@ main .comments-container hr {
 }
 
 main .comments-container .comment {
-    width: 600px;
+    width: 800px;
     background-color: var(--glass-color);
     border: none;
     border-left: 1px solid var(--glass-color);
@@ -402,6 +402,7 @@ main .comments-container .comment .pfp-container .pfp {
 
 main .comments-container .comment .text-container {
     width: 70%;
+    margin-right: 20px;
 }
 
 main .comments-container .comment .text-container h3 {
