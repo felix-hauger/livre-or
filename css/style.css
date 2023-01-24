@@ -42,6 +42,7 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: rgba(0, 0, 0, .3);
+
     /* blur behind the element */
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
@@ -88,9 +89,6 @@ main > .container {
 
 .pfp-container {
     background-color: var(--glass-color);
-    /* padding: 12px;
-    border-radius: 12px; */
-    /* margin-right: 30px; */
     
     /* blur behind the element */
     backdrop-filter: blur(10px);
@@ -100,14 +98,6 @@ main > .container {
 }
 
 .pfp-container .pfp {
-    /* border-radius: 8px; */
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    height: 100%; */
-    /* width: 100%; */
-    /* min-width: 100%; */
     background-size: cover;
     background-position: center;
     height: 100%;
@@ -124,7 +114,6 @@ main > .container {
 
 .index-container {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
     padding-top: 6rem;
@@ -132,9 +121,6 @@ main > .container {
 }
 
 #index-title {
-    /* margin-top: 12rem; */
-    /* align-items: center; */
-    /* height: 100vh; */
     font-size: 3rem;
     text-shadow: 4px 4px 4px #222;
 }
@@ -163,7 +149,6 @@ main .form-container {
     position: relative;
     display: flex;
     justify-content: center;
-    /* padding-top: 4em; */
 }
 
 main .form-container form {
