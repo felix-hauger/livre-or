@@ -340,14 +340,14 @@ main .comments-container {
 
 main .comments-container h2 {
     font-size: 2.3rem;
-    color: #DAA520;
+    color: #7BBF41;
     text-shadow: var(--shadow-color) -6px -4px 10px;
     margin-top: 1.5em;
 }
 
 main .comments-container hr {
     margin: 3rem 0 5rem;
-    border-color: #DAA520;
+    border-color: #7BBF41;
     width: 60%;
 }
 
