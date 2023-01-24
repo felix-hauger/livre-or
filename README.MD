@@ -10,7 +10,7 @@ Ce projet a été développé en PHP et permet à des utilisateurs de laisser de
 1. Téléchargez ou clonez le dépôt sur votre ordinateur.
 2. Placez les fichiers sur votre serveur Web.
 3. Créez une base de données et importez le fichier database.sql pour créer la table nécessaire à la prise en charge des commentaires.
-4. Modifiez le fichier db_connect.php avec les informations de connexion de votre base de données.
+4. Modifiez le fichier database.ini dans le dossier config avec les informations de connexion de votre base de données.
 
 ## Utilisation
 1. Inscrivez-vous sur la page inscription.php.

@@ -202,6 +202,7 @@ main > .container {
     font-size: 1.4rem;
     font-family: montserratbold, Arial, Helvetica;
 }
+
 /* ------ FORM ------ */
 
 main .form-container {
@@ -229,7 +230,6 @@ main .form-container form {
     box-shadow: 20px 20px 40px -6px var(--shadow-color);
     text-align: center;
 }
-
 
 main .form-container form h2,
 main .form-container form p {
@@ -430,7 +430,6 @@ main .comments-container .comment {
     align-items: center;
     /* justify-content: space-between; */
 }
-
 
 main .comments-container .comment .pfp-container {
     width: 80px;
