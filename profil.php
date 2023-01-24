@@ -133,8 +133,14 @@ if (isset($_POST['login-submit'])) {
             if (in_array($file_extension, $extensions_array)) {
                     // echo 'proute';
                     imagepng(imagecreatefromstring(file_get_contents($_FILES['profile-picture']['tmp_name'])), 'uploads/pfp/' . $logged_user_id . '_pfp' . '.png');
+            } else {
+                $file_error = 'Format du fichier non accepté. Formats acceptés : png, gif, jpg, jpeg, webp';
             }
+        } else {
+            $file_error = 'Image trop lourde. Veuillez respecter la limite de 1mo.';
         }
+    } else {
+        $file_error = 'Erreur dans l\'upload de l\'image';
     }
 }
 ?>
@@ -190,6 +196,10 @@ if (isset($_POST['login-submit'])) {
                     </label>
 
                     <p id="pfp-name"></p>
+
+                    <?php if (isset($file_error)): ?>
+                        <p class="error_msg"><?= $file_error ?></p>
+                    <?php endif ?>
     
                     <input type="submit" name="pfp-submit" value="Modifier">
                 </form>
