@@ -44,7 +44,14 @@ if (isset($_SESSION['is_logged'])) {
     <main>
         <div class="container index-container">
             <h2 id="index-title">Bonjour <?= isset($logged_user) ? $logged_user : 'invité' ?> !</h2>
-            <p>Ceci est un livre d'or. <br /> N'hésitez pas à <a href="commentaire.php">laisser un commentaire !</a></p>
+            <p>Ceci est un livre d'or. <br /> N'hésitez pas à laisser un commentaire !</p>
+            <a href="commentaire.php" class="btn-link">
+                <span>Laisser un commentaire</span>
+                <svg>
+                    <polyline class="fill" points="0 0, 300 0, 300 110, 0 110, 0 0"></polyline>
+                    <polyline class="animated-line" points="0 0, 300 0, 300 110, 0 110, 0 0"></polyline>
+                </svg>
+            </a>
         </div>
     </main>
     

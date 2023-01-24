@@ -126,7 +126,8 @@ main > .container {
 }
 
 .index-container p {
-    margin-top: 4rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
     font-size: 1.4rem;
     text-align: center;
     line-height: 2em;
@@ -143,6 +144,55 @@ main > .container {
     text-decoration: underline;
 }
 
+/* Button to go to page to leave a comment */
+
+.btn-link {
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid #FFFFFFA2;
+	border-radius: 4px;
+	cursor: pointer;
+    color: #ddd;
+    height: fit-content;
+    align-self: center;
+    font-weight: 600;
+}
+
+.btn-link svg {
+    height: 110px;
+    width: 300px;
+    fill: none;
+    stroke-width: 5;
+}
+
+.btn-link svg .fill {
+    stroke: rgba(#7BBF41, 0.7);
+    fill: #7BBF41;
+    transition: all 1s ease-in-out;
+}
+
+.btn-link svg .animated-line {
+    stroke: white;
+    stroke-dasharray: 40 840;
+    stroke-dashoffset: 40;
+    transition: all 1s ease-in-out;
+}
+
+.btn-link:hover svg .fill {
+    fill: rgba(0, 0, 0, 0.3);
+}
+
+.btn-link:hover svg .animated-line {
+    stroke-dashoffset: -840;
+}
+
+.btn-link span {
+    position: absolute;
+    margin: auto 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 /* ------ FORM ------ */
 
 main .form-container {
