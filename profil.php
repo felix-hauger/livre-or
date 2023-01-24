@@ -177,14 +177,15 @@ if (isset($_POST['login-submit'])) {
                 <form action="" method="post" enctype="multipart/form-data">
                     <h2>Modifier votre image de profil</h2>
     
-                    <div class="pfp-container">
-                        <div class="pfp" style="background-image: url('uploads/pfp/<?= file_exists('uploads/pfp/' . $logged_user_id . '_pfp.png') ? $logged_user_id . '_pfp.png' : 'default_pfp.png' ?>');"></div>
-                    </div>
-    
-                    <label for="profile-picture" class="file-upload">
-                        <img src="img/upload-icon-20609.png" alt="upload icon" id="upload-icon">
-                        <span>Télécharger une image (max 1mo)</span>
-                        <input type="file" name="profile-picture" id="profile-picture">
+                    <p class="form-paragraph">Télécharger une image (max 1mo)</p>
+                    <label for="profile-picture" class="pfp-container">
+                        <div class="pfp" style="background-image: url('uploads/pfp/<?= file_exists('uploads/pfp/' . $logged_user_id . '_pfp.png') ? $logged_user_id . '_pfp.png' : 'default_pfp.png' ?>');">
+                            <input type="file" name="profile-picture" id="profile-picture">
+                        </div>
+                    </label>
+
+                    <label for="profile-picture"  id="upload-icon" class="file-upload">
+                        <img src="img/upload-icon-20609.png" alt="upload icon">
                     </label>
 
                     <p id="pfp-name"></p>

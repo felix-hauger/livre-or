@@ -209,8 +209,7 @@ main .form-container form .form-paragraph {
 }
 
 main .form-container form input,
-main .form-container form textarea,
-main .form-container label[for="profile-picture"] {
+main .form-container form textarea {
     display: block;
     background-color: transparent;
     border: none;
@@ -248,8 +247,7 @@ main .form-container form input:hover,
 main .form-container form input[type='text']:focus,
 main .form-container form input[type='password']:focus,
 main .form-container form textarea:focus,
-main .form-container form textarea:hover,
-main .form-container label[for="profile-picture"]:hover  {
+main .form-container form textarea:hover {
     background-color: rgba(255, 255, 255, .1);
     box-shadow: 4px 4px 60px 8px var(--shadow-color);
 }
@@ -291,13 +289,14 @@ main #profile-forms form #profile-picture {
 
 main #profile-forms label[for="profile-picture"] {
     cursor: pointer;
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
+    transition: all ease .5s;
+    opacity: .8;
 }
 
-main #profile-forms #upload-icon {
-    width: 30px;
-    margin-right: 8px;
+main #profile-forms label[for="profile-picture"]:hover  {
+    opacity: 1;
 }
 
 main input#delete {
@@ -313,8 +312,8 @@ main input#delete:hover {
 }
 
 main #profile-forms .pfp-container {
-    width: 120px;
-    height: 120px;
+    width: 180px;
+    height: 180px;
     padding: 8px;
 }
 
@@ -326,9 +325,19 @@ main #profile-forms .pfp-container .pfp {
     height: 100%;
 }
 
+main #profile-forms #upload-icon {
+    width: 45px;
+    margin-top: 1.8em;
+}
+
+main #profile-forms #upload-icon img {
+    width: 100%;
+}
+
 main #profile-forms #pfp-name {
     margin-top: 5px;
     color: #43f591;
+    height: 1em;
 }
 
 main form#delete-confirm {
@@ -366,7 +375,7 @@ main .comments-container .comment {
     border-top: 1px solid var(--glass-color);
     padding: 20px 30px;
     margin-bottom: 25px;
-    
+
     /* blur behind the element */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
