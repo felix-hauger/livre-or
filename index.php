@@ -48,8 +48,8 @@ if (isset($_SESSION['is_logged'])) {
             <a href="commentaire.php" class="btn-link">
                 <span>Laisser un commentaire</span>
                 <svg>
-                    <polyline class="fill" points="0 0, 300 0, 300 110, 0 110, 0 0"></polyline>
-                    <polyline class="animated-line" points="0 0, 300 0, 300 110, 0 110, 0 0"></polyline>
+                    <polyline class="fill" points="0 0, 450 0, 450 165, 0 165, 0 0"></polyline>
+                    <polyline class="animated-line" points="0 0, 450 0, 450 165, 0 165, 0 0"></polyline>
                 </svg>
             </a>
         </div>

@@ -167,8 +167,8 @@ main > .container {
 }
 
 .btn-link svg {
-    height: 110px;
-    width: 300px;
+    height: 165px;
+    width: 450px;
     fill: none;
     stroke-width: 5;
 }
@@ -181,8 +181,8 @@ main > .container {
 
 .btn-link svg .animated-line {
     stroke: white;
-    stroke-dasharray: 40 840;
-    stroke-dashoffset: 40;
+    stroke-dasharray: 60 1260;
+    stroke-dashoffset: 60;
     transition: all 1s ease-in-out;
 }
 
@@ -191,7 +191,7 @@ main > .container {
 }
 
 .btn-link:hover svg .animated-line {
-    stroke-dashoffset: -840;
+    stroke-dashoffset: -1260;
 }
 
 .btn-link span {
@@ -199,6 +199,7 @@ main > .container {
     margin: auto 0;
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-size: 1.4rem;
     font-family: montserratbold, Arial, Helvetica;
 }
 /* ------ FORM ------ */
