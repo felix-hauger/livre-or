@@ -66,7 +66,7 @@ if (isset($_SESSION['is_logged']) && isset($_SESSION['logged_user_id'])) {
                     <p class="error_msg"><?= $comment_error ?></p>
                 <?php elseif (isset($comment_success)) : ?>
                     <p class="success_msg"><?= $comment_success ?></p>
-                    <a href="commentaire.php" class="btn-link btn-small">
+                    <a href="livre-or.php" class="btn-link btn-small">
                         <span>Livre d'or</span>
                         <svg>
                             <polyline class="fill" points="0 0, 150 0, 150 55, 0 55, 0 0"></polyline>
