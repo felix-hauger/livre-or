@@ -316,6 +316,7 @@ main .form-container form textarea {
 
 main .form-container form textarea {
     padding: 2rem;
+    overflow: hidden;
 }
 
 main .form-container form input:hover,
