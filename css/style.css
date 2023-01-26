@@ -20,6 +20,17 @@ h1, h2, h3, p {
     --shadow-color: rgba(0, 0, 0, .2);
 }
 
+.error_msg, .success_msg {
+    max-width: 400px;
+    font-family: montserratregular;
+    font-size: .9rem;
+}
+
+.error_msg a, .success_msg a {
+    font-size: 1rem;
+    font-family: montserratsemibold;
+}
+
 .error_msg {
     color: #FF3C00;
     font-weight: 600;
@@ -27,7 +38,7 @@ h1, h2, h3, p {
 }
 
 .success_msg {
-    color:#37a969;
+    color:#3D597D;
     font-weight: 600;
     margin-top: 10px;
 }
@@ -201,6 +212,28 @@ main > .container {
     letter-spacing: 1px;
     font-size: 1.4rem;
     font-family: montserratbold, Arial, Helvetica;
+}
+
+.btn-link.btn-small {
+    margin-top: 10px;
+}
+
+.btn-link.btn-small svg {
+    height: 55px;
+    width: 150px;
+}
+
+.btn-link.btn-small svg .animated-line {
+    stroke-dasharray: 20 420;
+    stroke-dashoffset: 20;
+}
+
+.btn-link.btn-small:hover svg .animated-line {
+    stroke-dashoffset: -420;
+}
+
+.btn-link.btn-small span {
+    font-size: 1rem;
 }
 
 /* ------ FORM ------ */
@@ -387,7 +420,7 @@ main form#delete-confirm {
     align-self: center;
 }
 
-/* ------- COMMENTS -------- */
+/* ------- LIVRE-OR -------- */
 
 main .comments-container {
     display: flex;
@@ -484,6 +517,18 @@ main .comments-container .comment .delete-comment {
 main .comments-container .comment .delete-comment:hover {
     background-color: rgba(255, 46, 31, .8);
     box-shadow: 4px 4px 60px 8px var(--shadow-color);
+}
+
+/* COMMENT */
+
+.success_msg a {
+    text-decoration: none;
+    color: inherit;
+    transition: all ease .3s;
+}
+
+.success_msg a:hover {
+    text-decoration: underline;
 }
 
 /* ----------- FOOTER ---------- */

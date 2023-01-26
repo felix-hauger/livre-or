@@ -18,11 +18,22 @@ if (isset($_SESSION['is_logged']) && isset($_SESSION['logged_user_id'])) {
             $sql = 'INSERT into comments (`comment`, `user_id`, `date`) VALUES (:comment, :user_id, :date)';
 
             $insert = $pdo->prepare($sql);
-            $insert->execute([
-                'comment' => $comment,
-                'user_id' => $logged_user_id,
-                'date'    => date('Y-m-d h:m:s')
-            ]);
+
+            $insert->bindParam(':comment', $comment);
+            $insert->bindParam(':user_id', $logged_user_id);
+            $insert->bindValue(':date', date('Y-m-d h:m:s'));
+
+            // $insert->execute([
+            //     'comment' => $comment,
+            //     'user_id' => $logged_user_id,
+            //     'date'    => date('Y-m-d h:m:s')
+            // ]);
+
+            if ($insert->execute()) {
+                $comment_success = 'Commentaire posté avec succès !';
+            } else {
+                $comment_error = 'Erreur dans l\' envoi du commentaire';
+            }
         } else {
             $comment_error = 'Le champ est vide !';
         }
@@ -51,10 +62,19 @@ if (isset($_SESSION['is_logged']) && isset($_SESSION['logged_user_id'])) {
                 <h2>Ajouter un Commentaire</h2>
                 <textarea name="comment" id="comment" cols="30" rows="10" autofocus></textarea>
                 <input type="submit" name="submit" value="Envoyer">
+                <?php if (isset($comment_error)) : ?>
+                    <p class="error_msg"><?= $comment_error ?></p>
+                <?php elseif (isset($comment_success)) : ?>
+                    <p class="success_msg"><?= $comment_success ?></p>
+                    <a href="commentaire.php" class="btn-link btn-small">
+                        <span>Livre d'or</span>
+                        <svg>
+                            <polyline class="fill" points="0 0, 150 0, 150 55, 0 55, 0 0"></polyline>
+                            <polyline class="animated-line" points="0 0, 150 0, 150 55, 0 55, 0 0"></polyline>
+                        </svg>
+                    </a>
+                <?php endif ?>
             </form>
-            <?php if (isset($comment_error)) : ?>
-                <p class="error_msg"><?= $comment_error ?></p>
-            <?php endif ?>
         </div>
     </main>
     <?php require_once 'elements/footer.php'; ?>
