@@ -21,13 +21,7 @@ if (isset($_SESSION['is_logged']) && isset($_SESSION['logged_user_id'])) {
 
             $insert->bindParam(':comment', $comment);
             $insert->bindParam(':user_id', $logged_user_id);
-            $insert->bindValue(':date', date('Y-m-d h:m:s'));
-
-            // $insert->execute([
-            //     'comment' => $comment,
-            //     'user_id' => $logged_user_id,
-            //     'date'    => date('Y-m-d h:m:s')
-            // ]);
+            $insert->bindValue(':date', date('Y-m-d H:i:s'));
 
             if ($insert->execute()) {
                 $comment_success = 'Commentaire posté avec succès !';
