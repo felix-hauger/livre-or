@@ -17,3 +17,4 @@ Ce projet a été développé en PHP et permet à des utilisateurs de laisser de
 2. Connectez-vous sur la page connexion.php.
 3. Saisissez votre commentaire dans le formulaire sur la page commentaire.php et cliquez sur "Envoyer". Votre commentaire sera affiché sur la page livre-or.php avec les commentaires précédemment soumis.
 4. Modifier vos informations de profil telles que le login, le mot de passe et l'image de profil sur la page profil.php
+5. Vous pouvez vous connecter avec le compte administrateur, par défaut les login et mot de passe sont "admin". Vous pouvez également modifier ces identifiants.
