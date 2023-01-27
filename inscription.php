@@ -73,6 +73,7 @@ if (isset($_POST['submit'])) {
     <title>Inscription | Livre d'Or</title>
     <link rel="stylesheet" href="font/webfont.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <?php if (isset($register_success_msg)) : ?>
         <meta http-equiv="refresh" content="3;url=connexion.php">
     <?php endif ?>

@@ -33,6 +33,7 @@ if (isset($_POST['delete-comment'])) {
     <title>Les Commentaires | Livre d'Or</title>
     <link rel="stylesheet" href="font/webfont.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <script src="https://kit.fontawesome.com/42d5a324f0.js" crossorigin="anonymous"></script>
 </head>
 
