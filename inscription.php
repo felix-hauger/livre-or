@@ -53,17 +53,15 @@ if (isset($_POST['submit'])) {
         // save our prepared request in statement
         $insert = $pdo->prepare($sql);
 
-        // Execute with array of parameters
-        $insert->execute([
-            'login' => $input_login,
-            'password' => $hashed_password
-        ]);
+        $insert->bindParam(':login', $input_login);
+        $insert->bindParam(':password', $hashed_password);
 
-        header('Location: connexion.php');
+        // to display success message, then redirect 3 seconds later using meta refresh tag
+        if ($insert->execute()) {
+            $register_success_msg = 'Inscription réussie ! Redirection en cours...';
+        }
     }
 }
-
-require_once('elements/header.php');
 
 ?>
 <!DOCTYPE html>
@@ -75,9 +73,13 @@ require_once('elements/header.php');
     <title>Inscription | Livre d'Or</title>
     <link rel="stylesheet" href="font/webfont.css">
     <link rel="stylesheet" href="css/style.css">
+    <?php if (isset($register_success_msg)) : ?>
+        <meta http-equiv="refresh" content="3;url=connexion.php">
+    <?php endif ?>
     <script src="https://kit.fontawesome.com/42d5a324f0.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <?php require_once('elements/header.php'); ?>
 
     <main>
         <div class="container form-container">
@@ -98,6 +100,8 @@ require_once('elements/header.php');
                 <input type="submit" value="Inscription" name="submit">
                 <?php if (isset($inputs_error)) : ?>
                     <p class="error_msg"><?= $inputs_error ?></p>
+                <?php elseif (isset($register_success_msg)) : ?>
+                    <p class="success_msg"><?= $register_success_msg ?></p>
                 <?php endif; ?>
             </form>
         </div>
