@@ -48,6 +48,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `login`, `password`) VALUES
+(1, 'admin', '$2y$10$h.SsBErr0yqowkbKGw/J2unfJ0Suun3iwd4h8ncihqbrY/INjI8Uy');
+
+--
 -- Index pour les tables déchargées
 --
 
